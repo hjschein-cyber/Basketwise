@@ -11,8 +11,8 @@ import israeli_prices as ilp
 
 ROOT=Path(__file__).resolve().parent
 BRANCHES={
-  "rami":{"chain":"rami-levy","id":"71","name":"רמי לוי רמת בית שמש",
-          "address":"נהר הירקון 38","check":("רמת בית שמש","נהר הירקון")},
+  "rami":{"chain":"rami-levy","id":None,"name":"רמי לוי בית שמש - יגאל אלון",
+          "address":"שדרות יגאל אלון 4","check":("יגאל","אלון")},
   "osher":{"chain":"osher-ad","id":"16","name":"אושר עד בית שמש - גליל",
            "address":"מורדי הגיטאות 6","check":("בית שמש","גליל","מורדי הגיטאות")},
 }
@@ -80,14 +80,25 @@ def choose(name, items):
 
 def load_branch(sid, config, products):
     chain=config["chain"]
-    target=str(config["id"]).lstrip("0")
     stores=ilp.get_stores(chain).stores
-    matching=[x for x in stores if str(x.store_id).lstrip("0")==target]
+    def identity(st):
+        return clean(" ".join(str(getattr(st,key,"") or "") for key in ("name","address","city")))
+    if config.get("id") is None:
+        # Resolve by the distinctive STREET, not a store number sourced from a third party.
+        matching=[x for x in stores if all(part in identity(x) for part in config["check"])
+                  and "רמת בית שמש" not in identity(x)
+                  and "נהר הירקון" not in identity(x)]
+    else:
+        target=str(config["id"]).lstrip("0")
+        matching=[x for x in stores if str(x.store_id).lstrip("0")==target]
     if len(matching)!=1:
-        raise RuntimeError(f"{chain}: Store ID {target} is not unique ({len(matching)}).")
+        near=[(x.store_id,identity(x)) for x in stores if "בית שמש" in identity(x)
+              or "יגאל" in identity(x) or "אלון" in identity(x)]
+        raise RuntimeError(f"{chain}: Expected one matching branch, got {len(matching)}; nearby={near}")
     store=matching[0]
-    branch_info=clean(" ".join(str(getattr(store,key,"") or "") for key in ("name","address","city")))
-    if not any(x in branch_info for x in config["check"]):
+    target=str(store.store_id).lstrip("0")
+    branch_info=identity(store)
+    if not all(x in branch_info for x in config["check"]):
         raise RuntimeError(f"{chain}: Branch identity mismatch: {branch_info}")
     data=ilp.get_prices(chain,store_id=str(store.store_id))
     rows=getattr(data,"items",None) or []
