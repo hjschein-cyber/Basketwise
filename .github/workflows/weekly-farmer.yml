@@ -1,5 +1,9 @@
 name: Refresh The Farmer prices (weekly)
 on:
+  push:
+    paths:
+      - '.github/workflows/weekly-farmer.yml'
+      - 'scrape_farmer.py'
   workflow_dispatch:
   schedule:
     - cron: "10 6 * * 1"
