@@ -1,7 +1,218 @@
 {
-  "mode": "not_yet_connected",
-  "capturedAt": null,
+  "mode": "official_branch_files",
+  "capturedAt": "2026-11-24T09:08:39+00:00",
   "source": "https://url.publishedprices.co.il/",
-  "description": "Official branch prices become available only after the supermarket refresh workflow runs successfully.",
-  "branches": {}
+  "description": "Branch-specific official regular prices, excluding promotions; conservatively matched fresh produce only.",
+  "branches": {
+    "rami": {
+      "chain": "rami-levy",
+      "branchName": "רמת בית שמש",
+      "branchAddress": "שדרות נהר הירקון 38",
+      "storeId": "071",
+      "checkedAt": "2026-11-24T09:08:33+00:00",
+      "totalPublishedItems": 11934,
+      "products": [
+        {
+          "pid": "f_9c973eb004f8",
+          "name": "אבוקדו",
+          "unit": "kg",
+          "price": 6.6,
+          "retailerName": "אבוקדו",
+          "retailerCode": "7290000000135",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_5de62fe58c72",
+          "name": "תפוח גרנד",
+          "unit": "kg",
+          "price": 10.9,
+          "retailerName": "תפוח עץ ירוק גרנד סמ",
+          "retailerCode": "7290000000116",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_67f845ecd119",
+          "name": "תפוח פינק לידי",
+          "unit": "kg",
+          "price": 13.9,
+          "retailerName": "תפוח עץ פינק",
+          "retailerCode": "7290000000797",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_26221c027bca",
+          "name": "בטטה",
+          "unit": "kg",
+          "price": 5.5,
+          "retailerName": "בטטה",
+          "retailerCode": "7290000000138",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_1081943969f7",
+          "name": "בצל",
+          "unit": "kg",
+          "price": 5.6,
+          "retailerName": "בצל יבש",
+          "retailerCode": "7290000000108",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_ae88374d1a7f",
+          "name": "בצל אדום",
+          "unit": "kg",
+          "price": 5.9,
+          "retailerName": "בצל אדום",
+          "retailerCode": "7290000000289",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_115135a9e691",
+          "name": "גזר",
+          "unit": "kg",
+          "price": 5.0,
+          "retailerName": "גזר",
+          "retailerCode": "7290000001102",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_5156cb6b26be",
+          "name": "חציל",
+          "unit": "kg",
+          "price": 4.8,
+          "retailerName": "חציל",
+          "retailerCode": "7290000000106",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_e4b0d0dddd88",
+          "name": "עגבניה",
+          "unit": "kg",
+          "price": 5.9,
+          "retailerName": "עגבניה",
+          "retailerCode": "7290000000100",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_5ad3dc7b0f81",
+          "name": "עגבניה מגי",
+          "unit": "kg",
+          "price": 13.9,
+          "retailerName": "עגבניה מגי",
+          "retailerCode": "7290000945041",
+          "date": "2026-11-24T09:08:33+00:00",
+          "source": "official PriceFull; regular shelf price"
+        }
+      ]
+    },
+    "osher": {
+      "chain": "osher-ad",
+      "branchName": "בית שמש - גליל",
+      "branchAddress": "מורדי הגיטאות 6",
+      "storeId": "016",
+      "checkedAt": "2026-11-24T09:08:39+00:00",
+      "totalPublishedItems": 6372,
+      "products": [
+        {
+          "pid": "f_9c973eb004f8",
+          "name": "אבוקדו",
+          "unit": "kg",
+          "price": 5.9,
+          "retailerName": "אבוקדו",
+          "retailerCode": "7290009005615",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_26221c027bca",
+          "name": "בטטה",
+          "unit": "kg",
+          "price": 5.9,
+          "retailerName": "בטטה",
+          "retailerCode": "7290009001105",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_1081943969f7",
+          "name": "בצל",
+          "unit": "kg",
+          "price": 5.9,
+          "retailerName": "בצל",
+          "retailerCode": "7290009000900",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_ae88374d1a7f",
+          "name": "בצל אדום",
+          "unit": "kg",
+          "price": 5.9,
+          "retailerName": "בצל אדום",
+          "retailerCode": "7290009000931",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_115135a9e691",
+          "name": "גזר",
+          "unit": "kg",
+          "price": 4.9,
+          "retailerName": "גזר",
+          "retailerCode": "7290009000313",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_5156cb6b26be",
+          "name": "חציל",
+          "unit": "kg",
+          "price": 3.9,
+          "retailerName": "חציל",
+          "retailerCode": "7290009001419",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_c5fe22fc5c10",
+          "name": "סלק",
+          "unit": "kg",
+          "price": 3.9,
+          "retailerName": "סלק",
+          "retailerCode": "7290009000405",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_e4b0d0dddd88",
+          "name": "עגבניה",
+          "unit": "kg",
+          "price": 5.9,
+          "retailerName": "עגבניה",
+          "retailerCode": "7290009000122",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        },
+        {
+          "pid": "f_67ba0e7e49b0",
+          "name": "קישוא",
+          "unit": "kg",
+          "price": 8.9,
+          "retailerName": "קישוא",
+          "retailerCode": "7290009001808",
+          "date": "2026-11-24T09:08:39+00:00",
+          "source": "official PriceFull; regular shelf price"
+        }
+      ]
+    }
+  }
 }
