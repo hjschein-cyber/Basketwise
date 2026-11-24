@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#12573e"/><meta name="description" content="Compare produce baskets and prices across The Farmer, Rami Levy, Osher Ad and your local stores."/>
+<title>Basketwise — Produce price tracker</title><link rel="manifest" href="manifest.webmanifest"/>
+<style>
+:root{--green:#165b42;--dark:#12372b;--mint:#dcefe6;--bg:#f6f7f4;--border:#dde5de;--text:#182a22;--muted:#6b7b72;--orange:#faeacb;--red:#ad4335;--white:#fff;--shadow:0 3px 14px #164c2a0c}*{box-sizing:border-box}html{font-size:16px}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.46 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:0 auto;padding:0 16px 100px}header{background:var(--green);color:white;padding:22px 0 16px}header .top{max-width:1150px;margin:0 auto;padding:0 16px;display:flex;gap:16px;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:11px}.logo{font-size:27px;background:#ffffff1e;border-radius:14px;padding:8px}.brand h1{font-size:24px;line-height:1;margin:0}.brand small{opacity:.81;font-weight:500}header .subtitle{margin:9px auto 0;max-width:1150px;padding:0 16px;font-size:13px;opacity:.83}.nav{display:flex;gap:6px;overflow:auto;padding:10px 0 12px;margin:0 0 8px;border-bottom:1px solid var(--border)}.nav button{border:1px solid transparent;background:transparent;color:#52665c;padding:11px 15px;white-space:nowrap;border-radius:12px;font-weight:650}.nav button.active{background:var(--mint);color:var(--green);border-color:#c3decf}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.between{justify-content:space-between}.stack{display:grid;gap:14px}h2{font-size:20px;margin:0}h3{font-size:16px;margin:0 0 5px}.muted{color:var(--muted)}.tiny{font-size:12px}.small{font-size:13px}.card{background:white;border:1px solid var(--border);border-radius:17px;padding:17px;box-shadow:var(--shadow)}.panel-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap}.pill{display:inline-block;border:1px solid #b4d2c1;border-radius:50px;background:#edf7f1;color:var(--green);font-size:12px;font-weight:700;padding:4px 9px}.pill.warn{background:#fff7e8;border-color:#f0d09a;color:#865d1c}.pill.gray{background:#f5f6f5;border-color:#d9deda;color:#6b776e}.btn{background:var(--green);color:white;border:1px solid var(--green);border-radius:10px;padding:10px 13px;font-weight:700}.btn:hover{filter:brightness(1.07)}.btn.secondary{background:white;color:var(--green);border-color:#bdd3c5}.btn.subtle{background:#f4f7f4;color:#43584c;border-color:#dfe9e2}.btn.danger{color:#963b32;background:#fff3f0;border-color:#f5c2ba}.btn.small{padding:7px 9px;font-size:13px}.btn:disabled{opacity:.45;cursor:not-allowed}.intro{margin:0 0 13px}.notice{border:1px solid #efd6a0;background:#fff9ea;border-radius:12px;padding:11px 13px;margin:12px 0;color:#755321;font-size:13px}.info{border:1px solid #cde2d5;background:#f0faf4;border-radius:12px;padding:12px;margin:11px 0;font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{padding:16px;border:1px solid var(--border);border-radius:14px;background:white}.stat b{display:block;font-size:23px;margin:3px 0}.stat small{color:var(--muted)}.grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}input[type=number],input[type=text],input[type=date],select{width:100%;background:white;border:1px solid #cedbd1;border-radius:10px;padding:10px;color:var(--text);min-width:0}input:focus,select:focus{outline:2px solid #99cbbb;outline-offset:0}.w100{width:100%}.search{min-width:160px;flex:1}.select{min-width:155px}.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.product{padding:11px 12px;border:1px solid #e1e7e1;border-radius:13px;display:grid;gap:7px;background:#fff;min-width:0}.product-name{font-size:15px;font-weight:760}.product .he{direction:rtl;text-align:right}.qty{display:flex;gap:6px;align-items:center}.qty button{border:1px solid #d0dfd4;border-radius:8px;background:#f3f8f5;color:var(--green);font-weight:800;width:34px;height:36px;flex-shrink:0}.qty input{width:70px;text-align:center;padding:7px 5px}.product footer{display:flex;align-items:center;justify-content:space-between;gap:8px}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.scenario{border:1px solid var(--border);border-radius:14px;background:white;padding:14px;display:grid;gap:8px}.scenario.winner{border-color:#7ebd97;box-shadow:inset 0 0 0 1px #8fc7a4}.scenario .price{font-size:25px;font-weight:800;color:var(--green)}.progress{height:7px;background:#e9efe9;border-radius:20px;overflow:hidden}.progress span{height:100%;background:#4c986e;display:block;border-radius:20px}.table-scroll{overflow-x:auto}.compare-table{border-collapse:collapse;width:100%;font-size:13px;min-width:700px}.compare-table th,.compare-table td{padding:10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.compare-table th{background:#f5f7f5;color:#50665a;font-weight:750}.compare-table td.he,.compare-table th.he{direction:rtl;text-align:right}.compare-table .best{background:#e9f5ed;color:#165b42;font-weight:800}.controls-label{font-size:12px;color:#62756a;font-weight:650}.price-row{border:1px solid #dfe7e0;padding:12px;border-radius:12px;background:#fff;margin:7px 0;display:grid;grid-template-columns:1.3fr .75fr .7fr 1fr .75fr auto;gap:8px;align-items:end}.price-row .head{align-self:center}.price-row label{font-size:11px;color:#65766c}.price-row label input,.price-row label select{margin-top:4px}.price-row .date{font-size:11px;color:var(--muted)}.price-row .he{text-align:right;direction:rtl}.price-row .old{font-size:12px;color:#586e60}.settings-row{border-bottom:1px solid #e1e7e1;padding:14px 0;display:grid;grid-template-columns:1fr 120px 120px auto;gap:10px;align-items:center}.settings-row:last-child{border:0}.history-bar{height:7px;background:#e5f1e9;border-radius:12px;overflow:hidden}.history-bar div{height:100%;background:#408963}.flex1{flex:1}.empty{padding:24px;text-align:center;color:#798981}.tab{display:none}.tab.active{display:block}.footnote{margin:16px 0;color:#77877e;font-size:12px}.flex-center{display:flex;align-items:center}.fresh{font-size:12px;padding:3px 7px;border-radius:8px;background:#eaf5ef;color:#397751}.stale{background:#fff3db;color:#9b6821}.divider{border-top:1px solid #e3ebe4;margin:13px 0}.success{color:var(--green)}.danger-txt{color:var(--red)}.truncated{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.currency{direction:ltr;unicode-bidi:isolate}.chip{font-size:11px;font-weight:650;background:#eaf3ed;padding:3px 7px;border-radius:12px;color:#427257}.summary-tip{padding:15px;border-radius:12px;background:#f3f7f4;border:1px solid #e2ebe3}.date-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.small-field{max-width:160px}@media(max-width:900px){.summary-grid,.stats{grid-template-columns:repeat(2,1fr)}.price-row{grid-template-columns:1fr 1fr 1fr}.price-row .head{grid-column:1 / -1}.grid-2{grid-template-columns:1fr}.price-row .action{align-self:end}}@media(max-width:640px){header .top{align-items:flex-start}.brand h1{font-size:21px}.shell{padding:0 11px 100px}.nav button{padding:10px 12px;font-size:13px}.card{padding:13px}.product-grid,.summary-grid,.stats,.grid-3{grid-template-columns:1fr 1fr}.product-name{font-size:14px}.price-row{grid-template-columns:repeat(2,minmax(0,1fr))}.price-row .head{grid-column:1 / -1}.price-row .action{grid-column:2}.settings-row{grid-template-columns:1fr 1fr}.settings-row strong{grid-column:1/-1}h2{font-size:18px}.stat b{font-size:19px}.scenario .price{font-size:20px}}@media(max-width:400px){.product-grid{grid-template-columns:1fr}.summary-grid{grid-template-columns:1fr 1fr}.btn{padding:8px 10px}}
+</style></head><body>
+<header><div class="top"><div class="brand"><div class="logo">🥑</div><div><h1>Basketwise</h1><small>הסל החכם · Produce price tracker</small></div></div><span class="pill" id="sync-badge">Price tracker</span></div><div class="subtitle">The Farmer vs Rami Levy, Osher Ad & your favorite produce shop — ₪ / kg, ₪ / item, ₪ / pack</div></header>
+<main class="shell"><nav class="nav"><button type="button" data-tab="compare" class="active">📊 Compare baskets</button><button type="button" data-tab="prices">🏷️ Enter prices</button><button type="button" data-tab="catalog">🥬 Catalog</button><button type="button" data-tab="history">📈 Price history</button><button type="button" data-tab="settings">⚙️ Settings & backup</button></nav>
+<div id="toast" role="status" aria-live="polite"></div>
+<section id="tab-compare" class="tab active"><div class="panel-title"><div><h2>Your shopping basket</h2><div class="small muted">Enter amounts in kg, individual items, or comparable packages.</div></div><div class="controls"><button type="button" class="btn secondary small" id="clear-basket">Clear basket</button><button type="button" class="btn small" data-tab="catalog">+ Add products</button></div></div><div id="basket-status" class="info"></div><div id="chain-source-note" class="small muted" style="margin-bottom:14px"></div><div class="card" style="margin-bottom:14px"><div class="panel-title"><h3>🔎 Verified public supermarket sources</h3><span class="pill gray" id="chain-badge">Not connected</span></div><p class="small muted">Use branch-specific updates when available. Until the first successful published refresh, Rami Levy and Osher Ad are blank rather than guessed. Regular shelf prices may exclude promotions.</p><div class="controls"><a class="btn secondary small" href="https://www.netunim.co.il/kesef/mechirei-mazon/snif/rami-levy-71" target="_blank" rel="noopener">Rami Levy · Ramat Beit Shemesh ↗</a><a class="btn secondary small" href="https://www.netunim.co.il/kesef/mechirei-mazon/snif/osher-ad-16" target="_blank" rel="noopener">Osher Ad · Beit Shemesh ↗</a><button type="button" class="btn small" id="refresh-chains">Refresh published prices</button></div></div><div class="card" id="illustrative-panel" style="margin-bottom:14px"><div class="panel-title"><h3>📌 November 14 market survey (illustrative)</h3><span class="pill warn">NOT local branch prices</span></div><p class="small muted">A published survey reported Osher Ad reference prices for avocado ₪4.90/kg, carrots ₪3.90/kg, sweet potatoes ₪5.90/kg. These are <b>not</b> used in your basket totals, and may not apply at your local store.</p><div id="sample-math" class="small"></div><p class="tiny muted"><a href="https://timenews.co.il/vegetable-fruit-prices-2026-11-15/" target="_blank" rel="noopener">Source: November 15 published survey (prices from November 14) ↗</a></p></div><div class="summary-grid" id="scenario-cards"></div><div class="card" style="margin-top:14px"><div class="panel-title"><h3>Like-for-like price comparison</h3><span class="pill gray" id="fair-count"></span></div><div id="fair-compare"></div></div><div class="card" style="margin-top:14px"><div class="panel-title"><h3>What's in your basket</h3><span class="small muted" id="basket-count"></span></div><div id="basket-items"></div></div><div class="card" style="margin-top:14px"><div class="panel-title"><h3>Product-by-product comparison</h3></div><div class="table-scroll" id="comparison-table"></div></div></section>
+<section id="tab-prices" class="tab"><div class="panel-title"><div><h2>Log prices while shopping</h2><div class="small muted">Select a store; enter shelf prices. Every save adds a dated historical observation.</div></div></div><div class="card"><div class="controls"><label class="flex1" style="min-width:160px"><span class="controls-label">Store</span><select id="selected-store"></select></label><label class="flex1" style="min-width:140px"><span class="controls-label">Shopping date</span><input id="shop-date" type="date"/></label><label class="flex1" style="min-width:170px"><span class="controls-label">Find product</span><input id="prices-search" type="text" placeholder="e.g. אבוקדו / avocado"/></label><label style="min-width:140px"><span class="controls-label">Category</span><select id="prices-category"></select></label></div><p class="info" id="price-help">Prices are saved on this device. Export a backup in Settings.</p><div id="prices-list"></div></div></section>
+<section id="tab-catalog" class="tab"><div class="panel-title"><div><h2>Products</h2><div class="small muted">Search everything The Farmer lists, plus your custom products.</div></div><span id="catalog-count" class="pill"></span></div><div class="card"><div class="controls"><input type="text" id="catalog-search" class="search" placeholder="Search in Hebrew or English..."/><select id="catalog-category" class="select"></select><button class="btn secondary small" id="refresh-prices">↻ Check latest Farmer prices</button></div><p id="farmer-source" class="small muted"></p><div class="product-grid" id="catalog-list"></div></div><div class="card" style="margin-top:14px"><h3>➕ Add a product not on The Farmer</h3><div class="controls" style="margin-top:10px"><input class="search" id="new-product-name" placeholder="Product name / שם מוצר"/><select id="new-product-unit" class="select"><option value="kg">Sold by kg</option><option value="each">Sold per item</option><option value="pack">Comparable pack</option></select><button class="btn" id="add-product">Add product</button></div></div></section>
+<section id="tab-history" class="tab"><div class="panel-title"><h2>Price history</h2></div><div class="card"><div class="controls"><label class="flex1"><span class="controls-label">Product</span><select id="history-product"></select></label><label class="flex1"><span class="controls-label">Store</span><select id="history-store"></select></label></div><div id="history-content"></div></div></section>
+<section id="tab-settings" class="tab"><div class="panel-title"><h2>Stores, delivery & backups</h2></div><div class="card"><h3>Your stores</h3><p class="small muted">Delivery costs affect checkout comparisons; store names and prices can be customized.</p><div id="store-settings"></div><div class="info"><b>Automated supermarket updates:</b> The included GitHub Action can fetch Rami Levy (Ramat Beit Shemesh) and Osher Ad (Beit Shemesh–Galil) official branch prices weekly. This requires publishing the app. Until the action succeeds, no unverified chain prices are used. You can also import its latest JSON here: <input type="file" id="import-chain-file" accept=".json,application/json" aria-label="Import official supermarket JSON" style="margin-top:8px"/></div><div class="controls" style="margin-top:12px"><input type="text" id="new-store-name" class="search" placeholder="Another supermarket or produce shop"/><button class="btn secondary" id="add-store">+ Add store</button></div></div><div class="card" style="margin-top:14px"><h3>Back up or move your data</h3><p class="small muted">Manual prices, dates, store names and your basket are stored only in this browser's local storage. They do not sync automatically between phones/computers.</p><div class="controls"><button class="btn" id="backup">Download backup JSON</button><button class="btn secondary" id="csv">Export prices CSV</button><label class="btn subtle" for="restore-file" style="display:inline-block;cursor:pointer">Import backup</label><input type="file" id="restore-file" accept=".json,application/json" style="display:none"/><button class="btn danger" id="reset-data">Reset local entries</button></div></div><div class="card" style="margin-top:14px"><h3>How weekly automatic updates work</h3><p class="small">When this project is published on GitHub Pages and its scheduled action is enabled, <b>The Farmer is checked every Monday</b>. The latest catalog is downloaded when you open or refresh this app. The timestamp tells you if the feed is current. Failed scrapes never silently replace the previous good snapshot.</p><p class="small muted">The first included reference list covers publicly visible products; it may not be complete. Automatic site extraction depends on The Farmer's page structure and can require maintenance if the website changes.</p><p class="small"><a href="https://thefarmer.co.il/" target="_blank" rel="noopener">Open The Farmer's official price list ↗</a></p><button class="btn secondary" id="refresh-prices-2">Check available online snapshot</button></div></section>
+<p class="footnote">Designed for shopping decisions, not checkout quotes. Approximate weights, promotions, variety differences and unavailable products can change the actual bill. Values displayed in Israeli shekels (₪).</p></main>
+<script id="initial-snapshot" type="application/json">{
+  "source": "https://thefarmer.co.il/",
+  "capturedAt": "2026-11-18T07:40:00+02:00",
+  "mode": "initial_reference",
+  "note": "Partial initial catalog transcribed from publicly visible product listing; weekly crawler is designed to replace with the live full catalog after publishing. Unspecified pack weights are not inferred.",
+  "products": [
+    {
+      "id": "f_9c973eb004f8",
+      "name": "אבוקדו",
+      "category": "פירות",
+      "price": 22,
+      "sizeQty": 1.5,
+      "unit": "kg",
+      "sizeText": "כ1.5 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_7a4c55625eb4",
+      "name": "חצי אבטיח",
+      "category": "פירות",
+      "price": 25,
+      "sizeQty": 3.5,
+      "unit": "kg",
+      "sizeText": "3-4 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_ebf188c5c2a4",
+      "name": "אוכמניות",
+      "category": "פירות",
+      "price": 18,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_2378b5f79d8c",
+      "name": "אננס מתוק במיוחד",
+      "category": "פירות",
+      "price": 40,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_66cc16d484dd",
+      "name": "אפרסק",
+      "category": "פירות",
+      "price": 24,
+      "sizeQty": 1.3,
+      "unit": "kg",
+      "sizeText": "כ1.3 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_c2326b6d4b87",
+      "name": "בננה",
+      "category": "פירות",
+      "price": 2,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_ee5106acb3e4",
+      "name": "דובדבן",
+      "category": "פירות",
+      "price": 15,
+      "sizeQty": 0.25,
+      "unit": "kg",
+      "sizeText": "כ250 גר׳",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_f41dab81ec82",
+      "name": "דובדבן לבן",
+      "category": "פירות",
+      "price": 15,
+      "sizeQty": 0.25,
+      "unit": "kg",
+      "sizeText": "כ250 גר׳",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_4230977f970b",
+      "name": "תפוח זהוב",
+      "category": "פירות",
+      "price": 24,
+      "sizeQty": 1.5,
+      "unit": "kg",
+      "sizeText": "כ1.5 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_5de62fe58c72",
+      "name": "תפוח גרנד",
+      "category": "פירות",
+      "price": 22,
+      "sizeQty": 1.3,
+      "unit": "kg",
+      "sizeText": "כ1.3 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_67f845ecd119",
+      "name": "תפוח פינק לידי",
+      "category": "פירות",
+      "price": 24,
+      "sizeQty": 1.5,
+      "unit": "kg",
+      "sizeText": "כ1.5 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_0703d9cca583",
+      "name": "תמר מג׳הול",
+      "category": "פירות",
+      "price": 15,
+      "sizeQty": 0.3,
+      "unit": "kg",
+      "sizeText": "300 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_26221c027bca",
+      "name": "בטטה",
+      "category": "ירקות",
+      "price": 16,
+      "sizeQty": 1.7,
+      "unit": "kg",
+      "sizeText": "כ1.7 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_1081943969f7",
+      "name": "בצל",
+      "category": "ירקות",
+      "price": 8,
+      "sizeQty": 1.3,
+      "unit": "kg",
+      "sizeText": "כ1.3 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_ae88374d1a7f",
+      "name": "בצל אדום",
+      "category": "ירקות",
+      "price": 10,
+      "sizeQty": 1.2,
+      "unit": "kg",
+      "sizeText": "כ1.2 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_115135a9e691",
+      "name": "גזר",
+      "category": "ירקות",
+      "price": 7,
+      "sizeQty": 1,
+      "unit": "kg",
+      "sizeText": "1 ק״ג",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_4f1bcc4f0cc2",
+      "name": "דלעת",
+      "category": "ירקות",
+      "price": 10,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_84a51d751d7f",
+      "name": "דלעת ערמונים",
+      "category": "ירקות",
+      "price": 10,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_5156cb6b26be",
+      "name": "חציל",
+      "category": "ירקות",
+      "price": 8,
+      "sizeQty": 1,
+      "unit": "kg",
+      "sizeText": "כ1 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_f03aec0ab66d",
+      "name": "לוף",
+      "category": "ירקות",
+      "price": 4,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_6a0c93f2d4f7",
+      "name": "מלפפון",
+      "category": "ירקות",
+      "price": 12,
+      "sizeQty": 1.1,
+      "unit": "kg",
+      "sizeText": "כ1.1 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_3edee66e38c5",
+      "name": "מלפפון בייבי",
+      "category": "ירקות",
+      "price": 8,
+      "sizeQty": 0.35,
+      "unit": "kg",
+      "sizeText": "350 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_c5fe22fc5c10",
+      "name": "סלק",
+      "category": "ירקות",
+      "price": 10,
+      "sizeQty": 1.3,
+      "unit": "kg",
+      "sizeText": "כ1.3 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_e4b0d0dddd88",
+      "name": "עגבניה",
+      "category": "ירקות",
+      "price": 14,
+      "sizeQty": 1.3,
+      "unit": "kg",
+      "sizeText": "כ1.3 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_5ad3dc7b0f81",
+      "name": "עגבניה מגי",
+      "category": "ירקות",
+      "price": 22,
+      "sizeQty": 1.5,
+      "unit": "kg",
+      "sizeText": "כ1.5 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_980f0538238a",
+      "name": "עגבניה שרי",
+      "category": "ירקות",
+      "price": 20,
+      "sizeQty": 1.2,
+      "unit": "kg",
+      "sizeText": "כ1.2 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_9f7dcb224a3e",
+      "name": "עגבניה שרי מארז קטן",
+      "category": "ירקות",
+      "price": 10,
+      "sizeQty": 0.4,
+      "unit": "kg",
+      "sizeText": "כ0.4 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_789fcf2d4eb2",
+      "name": "עגבניה שרי צבעוני",
+      "category": "ירקות",
+      "price": 10,
+      "sizeQty": 0.4,
+      "unit": "kg",
+      "sizeText": "כ0.4 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_13b8f3bf5958",
+      "name": "פלפל",
+      "category": "ירקות",
+      "price": 15,
+      "sizeQty": 1.1,
+      "unit": "kg",
+      "sizeText": "כ1.1 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_9325d456e465",
+      "name": "מיקס פלפל כתום צהוב",
+      "category": "ירקות",
+      "price": 15,
+      "sizeQty": 1,
+      "unit": "kg",
+      "sizeText": "כ1 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_777cd77beacc",
+      "name": "פלפל חריף",
+      "category": "ירקות",
+      "price": 6,
+      "sizeQty": 1,
+      "unit": "pack",
+      "sizeText": "למארז",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_a31675a96719",
+      "name": "פלפלונים",
+      "category": "ירקות",
+      "price": 8,
+      "sizeQty": 1,
+      "unit": "pack",
+      "sizeText": "למארז",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_ecf7a37c0ae6",
+      "name": "צנונית",
+      "category": "ירקות",
+      "price": 6,
+      "sizeQty": 1,
+      "unit": "pack",
+      "sizeText": "למארז",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_67ba0e7e49b0",
+      "name": "קישוא",
+      "category": "ירקות",
+      "price": 10,
+      "sizeQty": 1.2,
+      "unit": "kg",
+      "sizeText": "כ1.2 ק״ג",
+      "approx": true,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_2da55a013846",
+      "name": "מארז זוקיני",
+      "category": "ירקות",
+      "price": 8,
+      "sizeQty": 1,
+      "unit": "pack",
+      "sizeText": "למארז",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_8e29c5e3526f",
+      "name": "קולורבי",
+      "category": "ירקות",
+      "price": 5,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_6a700679100a",
+      "name": "שום ישראלי טרי",
+      "category": "ירקות",
+      "price": 3,
+      "sizeQty": null,
+      "unit": "unknown",
+      "sizeText": "",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_e088bbf821f8",
+      "name": "שום קלוף",
+      "category": "ירקות",
+      "price": 10,
+      "sizeQty": null,
+      "unit": "unknown",
+      "sizeText": "",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_280245d33ff4",
+      "name": "שומר",
+      "category": "ירקות",
+      "price": 4,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_9b8d208be8ba",
+      "name": "שעועית ירוקה",
+      "category": "ירקות",
+      "price": 14,
+      "sizeQty": 1,
+      "unit": "pack",
+      "sizeText": "למארז",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_71f15a1b5750",
+      "name": "שורש פטרוזליה",
+      "category": "ירקות",
+      "price": 7,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_b6dcea23567f",
+      "name": "שורש סלרי",
+      "category": "ירקות",
+      "price": 8,
+      "sizeQty": 1,
+      "unit": "each",
+      "sizeText": "ליחידה",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_7c2646956c9d",
+      "name": "תפו״א לבן",
+      "category": "ירקות",
+      "price": 15,
+      "sizeQty": null,
+      "unit": "unknown",
+      "sizeText": "",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_3ff8c5087aa4",
+      "name": "כרובית מהדרין",
+      "category": "ירקות",
+      "price": 24,
+      "sizeQty": null,
+      "unit": "unknown",
+      "sizeText": "",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_06a02c45fdc0",
+      "name": "ביצים L",
+      "category": "ביצים",
+      "price": 14,
+      "sizeQty": 12,
+      "unit": "each",
+      "sizeText": "12 יחידות",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_ff278bc4a18c",
+      "name": "אגוז מלך",
+      "category": "פיצוחים",
+      "price": 6,
+      "sizeQty": 0.1,
+      "unit": "kg",
+      "sizeText": "100 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_255d17f6f4b2",
+      "name": "חמוציות מסוכרות",
+      "category": "פיצוחים",
+      "price": 7,
+      "sizeQty": 0.1,
+      "unit": "kg",
+      "sizeText": "100 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_851594426663",
+      "name": "חמוציות ללא תוספת סוכר",
+      "category": "פיצוחים",
+      "price": 7,
+      "sizeQty": 0.1,
+      "unit": "kg",
+      "sizeText": "100 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_460412e50732",
+      "name": "קשיו טבעי",
+      "category": "פיצוחים",
+      "price": 17,
+      "sizeQty": 0.2,
+      "unit": "kg",
+      "sizeText": "200 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_5177cd30e655",
+      "name": "קשיו קלוי",
+      "category": "פיצוחים",
+      "price": 17,
+      "sizeQty": 0.2,
+      "unit": "kg",
+      "sizeText": "200 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_7cea2447f26e",
+      "name": "גרעיני חמניה",
+      "category": "פיצוחים",
+      "price": 7,
+      "sizeQty": 0.17,
+      "unit": "kg",
+      "sizeText": "170 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_e9d497b1c34b",
+      "name": "מיקס אגוזים טבעי",
+      "category": "פיצוחים",
+      "price": 17,
+      "sizeQty": 0.2,
+      "unit": "kg",
+      "sizeText": "200 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_e28a83044e79",
+      "name": "מיקס אגוזים קלוי",
+      "category": "פיצוחים",
+      "price": 17,
+      "sizeQty": 0.2,
+      "unit": "kg",
+      "sizeText": "200 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_957b0b317efc",
+      "name": "פקאן טבעי",
+      "category": "פיצוחים",
+      "price": 10,
+      "sizeQty": 0.1,
+      "unit": "kg",
+      "sizeText": "100 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_834e74f2178a",
+      "name": "פיסטוק קלוי",
+      "category": "פיצוחים",
+      "price": 17,
+      "sizeQty": 0.18,
+      "unit": "kg",
+      "sizeText": "180 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    },
+    {
+      "id": "f_38f3f509d454",
+      "name": "שקד טבעי",
+      "category": "פיצוחים",
+      "price": 17,
+      "sizeQty": 0.2,
+      "unit": "kg",
+      "sizeText": "200 גר׳",
+      "approx": false,
+      "url": "https://thefarmer.co.il/"
+    }
+  ]
+}</script>
+<script id="initial-supermarkets" type="application/json">{"mode": "not_yet_connected", "capturedAt": null, "source": "https://url.publishedprices.co.il/", "description": "Official branch prices become available only after the supermarket refresh workflow runs successfully.", "branches": {}}</script>
+<script>
+(()=>{'use strict';
+const STORAGE='basketwise.v1';const seed=JSON.parse(document.getElementById('initial-snapshot').textContent);const initialSupermarkets=JSON.parse(document.getElementById('initial-supermarkets').textContent);let marketSnapshot=initialSupermarkets;const byId=id=>document.getElementById(id);
+const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Jerusalem'});
+const safe=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>Number.isFinite(+n)?'₪'+(+n).toLocaleString('en-IL',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+const number=n=>Number(n||0).toLocaleString('en-IL',{maximumFractionDigits:2});
+const labelUnit=u=>({kg:'kg',each:'item',pack:'pack',unknown:'unknown'})[u]||u;
+const dateStr=d=>d?new Date(d).toLocaleDateString('en-GB',{timeZone:'Asia/Jerusalem'}):'unknown';
+const ndate=d=>Number.isFinite(Date.parse(d))?Math.floor((Date.now()-Date.parse(d))/86400000):null;
+let snapshot=seed;let status='initial';let tab='compare';let filters={catalog:'',catalogCat:'all',prices:'',pricesCat:'all'};
+const initial=()=>({stores:[{id:'farmer',name:'The Farmer',fee:0,threshold:200,auto:true},{id:'rami',name:'Rami Levy · Ramat Beit Shemesh',fee:0,threshold:0},{id:'osher',name:'Osher Ad · Beit Shemesh–Galil',fee:0,threshold:0},{id:'fruit',name:'Local fruit store',fee:0,threshold:0}],history:[],custom:[],basket:{},version:1});
+function starter(){const d=initial();d.history=[{"pid":"f_9c973eb004f8","name":"אבוקדו","sid":"fruit","price":9.9,"basis":"kg","packQty":1,"unit":"kg","date":"2026-11-12","added":0,"source":"Receipt supplied in conversation. Cherry variety may differ."},{"pid":"f_115135a9e691","name":"גזר","sid":"fruit","price":5.8,"basis":"kg","packQty":1,"unit":"kg","date":"2026-11-12","added":0,"source":"Receipt supplied in conversation. Cherry variety may differ."},{"pid":"f_26221c027bca","name":"בטטה","sid":"fruit","price":7.8,"basis":"kg","packQty":1,"unit":"kg","date":"2026-11-12","added":0,"source":"Receipt supplied in conversation. Cherry variety may differ."},{"pid":"f_67f845ecd119","name":"תפוח פינק לידי","sid":"fruit","price":17.8,"basis":"kg","packQty":1,"unit":"kg","date":"2026-11-12","added":0,"source":"Receipt supplied in conversation. Cherry variety may differ."},{"pid":"f_789fcf2d4eb2","name":"עגבניה שרי צבעוני","sid":"fruit","price":27.8,"basis":"kg","packQty":1,"unit":"kg","date":"2026-11-12","added":0,"source":"Receipt supplied in conversation. Cherry variety may differ."}];d.basket={"f_9c973eb004f8":1.97,"f_115135a9e691":1.101,"f_26221c027bca":1.446,"f_67f845ecd119":1.72,"f_789fcf2d4eb2":2.17};return d}
+let db=starter();try{let saved=JSON.parse(localStorage.getItem(STORAGE)||'null');if(saved&&Array.isArray(saved.stores)&&Array.isArray(saved.history))db={...initial(),...saved};}catch(e){console.warn('Saved data could not load',e)}
+const save=()=>{try{localStorage.setItem(STORAGE,JSON.stringify(db))}catch(e){message('Could not save locally. Please export a backup.',true)}};
+const products=()=>{const m=new Map(snapshot.products.map(p=>[p.id,p]));db.custom.forEach(p=>m.set(p.id,p));db.history.forEach(h=>{if(!m.has(h.pid)&&h.name){m.set(h.pid,{id:h.pid,name:h.name,category:'Earlier products',price:null,sizeQty:1,unit:h.unit||'kg',sizeText:''})}});return [...m.values()].sort((a,b)=>a.name.localeCompare(b.name,'he'))};
+const product=pid=>products().find(p=>p.id===pid);
+const unit=p=>p.unit==='unknown'?'unknown':p.unit;
+const last=(pid,sid)=>db.history.filter(h=>h.pid===pid&&h.sid===sid).sort((a,b)=>String(b.date).localeCompare(String(a.date))||b.added-a.added)[0]||null;
+function farm(p){return p?.price!=null?{price:+p.price,basis:'pack',packQty:+p.sizeQty||0,unit:p.unit,date:snapshot.capturedAt,approx:!!p.approx,source:'website'}:null}
+function market(p,sid){let branch=marketSnapshot?.branches?.[sid];if(!branch||!Array.isArray(branch.products))return null;const x=branch.products.find(it=>it.pid===p.id);if(!x||!(Number(x.price)>0)||x.unit!==p.unit)return null;return {ppu:+x.price,source:{name:x.retailerName,price:+x.price,basis:'kg',unit:x.unit,source:'official full price file'},date:x.date||branch.capturedAt||marketSnapshot.capturedAt,isOfficial:true}}
+function norm(p,sid){if(sid==='farmer'){let a=farm(p);if(!a||!a.packQty||a.unit==='unknown')return null;return {ppu:a.price/a.packQty,source:a,packPrice:a.price,packQty:a.packQty,date:a.date}}let a=last(p.id,sid);const official=market(p,sid);if(official&&(!a||String((a.date||'').slice(0,10))<String((official.date||'').slice(0,10))))return official;if(!a||!+a.price)return null;let pq=a.basis==='pack'?+a.packQty:1;if(!(pq>0))return null;let u=p.unit;if(u==='unknown')return null; if(a.unit!==u)return null;return{ppu:+a.price/pq,source:a,date:a.date}};
+const qtyLabel=(p,q)=>`${number(q)} ${labelUnit(p.unit)}`;
+const basketEntries=()=>Object.entries(db.basket).filter(([,q])=>+q>0).map(([pid,q])=>({p:product(pid),qty:+q})).filter(x=>x.p);
+const categories=()=>[...new Set(products().map(p=>p.category))].sort((a,b)=>a.localeCompare(b,'he'));
+const searchMatches=(p,query)=>{const n=(query||'').toLowerCase().trim();if(!n)return true;const alias={'אבוקדו':'avocado','גזר':'carrot','בטטה':'sweet potato','תפוח פינק לידי':'pink lady apple','תפו״א לבן':'potato','מלפפון':'cucumber','עגבניה':'tomato','עגבניה שרי':'cherry tomato','קישוא':'zucchini','בצל':'onion','בצל אדום':'red onion','פטרוזליה':'parsley','קולורבי':'kohlrabi','שומר':'fennel','חציל':'eggplant','אננס':'pineapple','בננה':'banana','ביצים':'eggs','פלפל':'pepper','סלק':'beet'};let english=Object.entries(alias).filter(([key])=>p.name.includes(key)).map(([,v])=>v).join(' ');return(p.name+' '+(p.category||'')+' '+english).toLowerCase().includes(n)};
+function message(t,bad=false){const e=byId('toast');e.innerHTML=`<div class="${bad?'notice':'info'}" style="margin:10px 0">${safe(t)}</div>`;clearTimeout(message.timeout);message.timeout=setTimeout(()=>e.innerHTML='',5000)}
+function tabs(id){tab=id;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));document.querySelectorAll('.tab').forEach(n=>n.classList.toggle('active',n.id==='tab-'+id));render()}
+function render(){if(tab==='compare')renderCompare();if(tab==='catalog')renderCatalog();if(tab==='prices')renderPrices();if(tab==='history')renderHistory();if(tab==='settings')renderSettings();const cap=byId('sync-badge');cap.textContent=status==='online'?`Farmer updated ${dateStr(snapshot.capturedAt)}`:`Reference ${dateStr(snapshot.capturedAt)}`;cap.className='pill '+(status==='online'?'':'warn')}
+function renderCompare(){const entries=basketEntries();
+const availability=marketSnapshot.mode==='official_branch_files';byId('chain-badge').textContent=availability?'Official branch data loaded':'Branch prices pending';byId('chain-badge').className='pill '+(availability?'':'warn');
+byId('chain-source-note').textContent=availability?'Official supermarket data collected '+dateStr(marketSnapshot.capturedAt)+' — each matching item has its own source name; your newer manual price takes priority.':'Rami Levy and Osher Ad currently use only prices you enter. Current official chain files have not yet been downloaded by this app.';
+const sample=[['f_9c973eb004f8',4.9],['f_115135a9e691',3.9],['f_26221c027bca',5.9]];
+const vals=sample.map(([pid,price])=>({pid,price,qty:+db.basket[pid]||0,other:norm(product(pid),'fruit'),f:norm(product(pid),'farmer')})).filter(x=>x.qty>0);
+byId('sample-math').textContent=vals.length?'For '+vals.length+' of your selected items: illustrative Osher Ad '+money(vals.reduce((sum,x)=>sum+x.qty*x.price,0))+' (equivalent weight); The Farmer '+money(vals.reduce((sum,x)=>sum+x.qty*(x.f?.ppu||0),0))+'. Not a full basket or a confirmed local quote.':'Add avocado, carrots or sweet potatoes to your basket to see a survey-based illustration.';
+byId('basket-count').textContent=`${entries.length} products`;
+byId('basket-status').innerHTML=entries.length?`<b>${entries.length} products</b> selected. Each store's total below covers only products with a comparable recorded price. <b>Missing prices are not treated as zero.</b> The Farmer prices use per-kilo equivalents; actual packaged checkout costs can be higher. Initial fruit-shop prices and quantities were seeded from your November 12 receipt (cherry varieties may differ); edit or clear them anytime.`:'Start by adding products from the catalog. Enter shelf prices under “Enter prices” to compare your preferred stores.';
+let results=db.stores.map(s=>{let found=entries.map(x=>({...x,n:norm(x.p,s.id)})).filter(x=>x.n);let total=found.reduce((t,x)=>t+Math.round(x.qty*x.n.ppu*100)/100,0);let checkout=s.id==='farmer'?found.reduce((t,x)=>t+Math.ceil(x.qty/x.n.packQty-.000000001)*x.n.packPrice,0):total;let delivery=s.fee&&(!(s.threshold>0)||checkout<s.threshold)?+s.fee:0;return{s,found,total,checkout:checkout+delivery,coverage:entries.length?found.length/entries.length:0,complete:entries.length>0&&found.length===entries.length}});
+let complete=results.filter(r=>r.complete).sort((a,b)=>a.total-b.total);let winner=complete[0]?.s.id;
+byId('scenario-cards').innerHTML=results.map(r=>`<div class="scenario ${r.s.id===winner?'winner':''}"><div class="row between"><b>${safe(r.s.name)}</b>${r.s.id===winner?'<span class="pill">Best full basket</span>':''}</div><div class="price">${r.found.length?money(r.total):'—'}</div><div class="small muted">${r.found.length}/${entries.length} products priced ${r.complete?'• full':'• partial'}</div><div class="progress"><span style="width:${r.coverage*100}%"></span></div>${r.s.id==='farmer'&&r.found.length?`<div class="small">Whole packages: <b>${money(r.checkout)}</b></div>`:''}${r.s.id!=='farmer'&&r.s.fee?`<div class="tiny muted">Estimated incl. delivery: ${money(r.checkout)}</div>`:''}</div>`).join('');
+let active=results.filter(r=>r.found.length>0);let common=active.length>=2?entries.filter(x=>active.every(r=>!!norm(x.p,r.s.id))):[];
+byId('fair-count').textContent=`${common.length} shared products across ${active.length} active stores`;
+if(common.length===0){byId('fair-compare').innerHTML=`<p class="small muted">Enter matching prices at least two stores to see an apples-to-apples comparison on the same items.</p>`}else{let comp=active.map(r=>({...r,value:common.reduce((sum,x)=>sum+Math.round(x.qty*norm(x.p,r.s.id).ppu*100)/100,0)})).sort((a,b)=>a.value-b.value);let low=comp[0].value;byId('fair-compare').innerHTML=`<div class="grid-3">${comp.map((r,i)=>`<div class="summary-tip"><div class="small muted">${safe(r.s.name)} ${i===0?'<span class="chip">Cheapest</span>':''}</div><div style="font-size:21px;font-weight:800">${money(r.value)}</div><div class="small">${i===0?'Baseline':`+${money(r.value-low)} (${low?number((r.value/low-1)*100):0}%)`}</div></div>`).join('')}</div><p class="tiny muted">Uses exactly the ${common.length} products that have valid prices in all ${active.length} active stores; excludes unpriced products. Prices are equivalent quantities, not necessarily whole-package checkout totals.</p>`}
+byId('basket-items').innerHTML=entries.length?`<div class="product-grid">${entries.map(({p,qty})=>`<div class="product"><div class="row between"><span class="product-name he" lang="he">${safe(p.name)}</span><button class="btn subtle small" data-remove="${safe(p.id)}" aria-label="Remove">×</button></div><div class="small muted">${safe(p.category)} · ${labelUnit(p.unit)}</div><div class="qty"><button data-step="-1" data-id="${safe(p.id)}">−</button><input type="number" inputmode="decimal" min="0" step="any" data-basketqty="${safe(p.id)}" value="${qty}" aria-label="Quantity"/><button data-step="1" data-id="${safe(p.id)}">+</button><small class="muted">${labelUnit(p.unit)}</small></div></div>`).join('')}</div>`:'<div class="empty">Your basket is empty. Open Catalog and tap Add.</div>';
+let columns=db.stores.map(s=>`<th>${safe(s.name)}</th>`).join('');byId('comparison-table').innerHTML=entries.length?`<table class="compare-table"><thead><tr><th class="he">Product</th><th>Amount</th>${columns}</tr></thead><tbody>${entries.map(({p,qty})=>{const vals=db.stores.map(s=>norm(p,s.id));const best=Math.min(...vals.filter(Boolean).map(a=>a.ppu));return`<tr><td class="he"><b>${safe(p.name)}</b></td><td>${qtyLabel(p,qty)}</td>${vals.map(a=>`<td class="${a&&Math.abs(a.ppu-best)<.0001?'best':''}">${a?`${money(a.ppu)} / ${labelUnit(p.unit)}<div class="tiny">${money(qty*a.ppu)} ${a.source.approx?'≈':''}</div><div class="tiny muted">${dateStr(a.date)}</div>`:'<span class="muted">No price</span>'}</td>`).join('')}</tr>`}).join('')}</tbody></table>`:'<p class="muted small">No products selected yet.</p>'}
+function catOptions(current){return `<option value="all">All categories</option>`+categories().map(c=>`<option value="${safe(c)}" ${current===c?'selected':''}>${safe(c)}</option>`).join('')}
+function renderCatalog(){byId('catalog-category').innerHTML=catOptions(filters.catalogCat);byId('catalog-search').value=filters.catalog;const matches=products().filter(p=>(filters.catalogCat==='all'||p.category===filters.catalogCat)&&searchMatches(p,filters.catalog)).slice(0,400);byId('catalog-count').textContent=`${products().length} products`;byId('farmer-source').innerHTML=`The Farmer's ${snapshot.products.length} captured products • ${dateStr(snapshot.capturedAt)} • ${status==='online'?'online catalog refresh':'initial reference, may be incomplete'} • <a target="_blank" rel="noopener" href="https://thefarmer.co.il/">View source</a>`;
+byId('catalog-list').innerHTML=matches.map(p=>{const q=+db.basket[p.id]||0;return`<div class="product"><div class="row between"><div class="product-name he" lang="he">${safe(p.name)}</div><span class="chip">${safe(p.category)}</span></div><div class="row between small"><span>${p.price==null?'<span class="muted">No Farmer price</span>':`<b>${money(p.price)}</b> / ${safe(p.sizeText||'size not stated')}`}</span><span class="muted">${p.price!=null&&p.sizeQty&&p.unit!=='unknown'?money(p.price/p.sizeQty)+' / '+labelUnit(p.unit):''}</span></div><footer><span class="tiny muted">${q?`In basket: ${qtyLabel(p,q)}`:'Not in basket'}</span><button class="btn secondary small" data-add="${safe(p.id)}">${q?'+ Add more':'+ Add to basket'}</button></footer></div>`}).join('')||'<div class="empty">No matching products.</div>'}
+function storeSelect(){let s=byId('selected-store'), prev=s.value||'rami';s.innerHTML=db.stores.filter(s=>!s.auto).map(t=>`<option value="${safe(t.id)}">${safe(t.name)}</option>`).join('');if([...s.options].some(o=>o.value===prev))s.value=prev}
+function renderPrices(){storeSelect();byId('prices-category').innerHTML=catOptions(filters.pricesCat);byId('prices-search').value=filters.prices;if(!byId('shop-date').value)byId('shop-date').value=today();renderPriceRows()}
+function renderPriceRows(){let sid=byId('selected-store').value;let matches=products().filter(p=>(filters.pricesCat==='all'||p.category===filters.pricesCat)&&searchMatches(p,filters.prices)).slice(0,250);
+byId('prices-list').innerHTML=matches.map(p=>{const prev=last(p.id,sid),f=norm(p,'farmer'),official=market(p,sid);const u=p.unit==='unknown'?'kg':p.unit;return`<div class="price-row" data-pricepid="${safe(p.id)}"><div class="head"><div class="product-name he" lang="he">${safe(p.name)}</div><div class="old">Farmer: ${f?money(f.ppu)+' / '+labelUnit(p.unit):'no comparable price'} ${official?`<br><b>Official branch:</b> ${money(official.ppu)} / ${safe(labelUnit(p.unit))} (${safe(dateStr(official.date))}) • ${safe(official.source.name||'')}`:''} ${prev?`<br>Last here: <b>${money(prev.price)}</b> / ${safe(prev.basis)} ${prev.basis==='pack'?'of '+number(prev.packQty)+' '+labelUnit(prev.unit):''} (${safe(prev.date)})`:''}</div></div><label>Price ₪<input type="number" inputmode="decimal" min="0.01" step="0.01" data-field="price" value="${prev?prev.price:''}" placeholder="e.g. 9.90"/></label><label>Basis<select data-field="basis"><option value="kg" ${prev?.basis==='kg'||!prev&&u==='kg'?'selected':''}>₪/kg</option><option value="each" ${prev?.basis==='each'||!prev&&u==='each'?'selected':''}>₪/item</option><option value="pack" ${prev?.basis==='pack'||!prev&&u==='pack'?'selected':''}>₪/pack</option></select></label><label>Pack contains<input type="number" inputmode="decimal" min=".001" step=".001" data-field="packQty" value="${prev?.packQty||p.sizeQty||1}" placeholder="kg/items"/><span class="tiny muted">Only used for /pack</span></label><div class="small muted" style="align-self:center">${p.unit==='unknown'?'<b class="danger-txt">Farmer pack size not stated</b>':`Compared in ${labelUnit(p.unit)}`}</div><button class="btn small action" data-saveprice="${safe(p.id)}">Save</button></div>`}).join('')||'<div class="empty">No products found. Add a custom product in Catalog.</div>'}
+function renderHistory(){let ps=products(),hp=byId('history-product'),hs=byId('history-store'),pv=hp.value,sv=hs.value||'farmer';hp.innerHTML=ps.map(p=>`<option value="${safe(p.id)}">${safe(p.name)}</option>`).join('');if(pv&&ps.some(p=>p.id===pv))hp.value=pv;hs.innerHTML=db.stores.map(s=>`<option value="${safe(s.id)}">${safe(s.name)}</option>`).join('');hs.value=sv;let pid=hp.value,p=product(pid),series=[];if(sv==='farmer'){let h=window._farmerHistory?.snapshots||[];series=h.flatMap(a=>(a.products||[]).filter(x=>x.id===pid&&x.sizeQty>0).map(x=>({date:a.capturedAt,ppu:x.price/x.sizeQty,raw:x.price,label:x.sizeText})));let f=norm(p,'farmer');if(f&&!series.some(x=>x.date===snapshot.capturedAt))series.push({date:snapshot.capturedAt,ppu:f.ppu,raw:f.source.price,label:f.source.sizeText})}else{series=db.history.filter(x=>x.pid===pid&&x.sid===sv).filter(x=>x.unit===p.unit&&(+x.packQty>0||x.basis!=='pack')).map(x=>({date:x.date,ppu:x.price/(x.basis==='pack'?x.packQty:1),raw:x.price,label:'entered by you'}));const hs=window._supermarketHistory?.snapshots||[];for(const snap of hs){let b=snap.branches?.[sv];const x=b?.products?.find(q=>q.pid===pid&&q.unit===p.unit);if(x)series.push({date:snap.capturedAt,ppu:+x.price,raw:+x.price,label:'official branch data'})}const current=market(p,sv);if(current&&!series.some(x=>x.date===marketSnapshot.capturedAt))series.push({date:marketSnapshot.capturedAt,ppu:current.ppu,raw:current.ppu,label:'official branch data'});}series.sort((a,b)=>String(b.date).localeCompare(String(a.date)));let mx=Math.max(1,...series.map(a=>a.ppu));byId('history-content').innerHTML=series.length?`<div class="divider"></div>${series.slice(0,40).map(x=>`<div style="display:grid;grid-template-columns:110px 1fr 100px;align-items:center;gap:12px;margin:11px 0"><div class="tiny muted">${dateStr(x.date)}</div><div class="history-bar"><div style="width:${x.ppu/mx*100}%"></div></div><div style="text-align:right"><b>${money(x.ppu)}</b><div class="tiny muted">/${safe(labelUnit(p.unit))}</div></div></div>`).join('')}`:'<div class="empty">No price history available for this product/store. Enter a price or wait for a second weekly snapshot.</div>'}
+function renderSettings(){byId('store-settings').innerHTML=db.stores.map(s=>`<div class="settings-row" data-sid="${safe(s.id)}"><strong>${s.auto?'🌿 ':''}${safe(s.name)}</strong><label><span class="controls-label">Delivery fee ₪</span><input type="number" min="0" step=".1" data-setting="fee" value="${s.fee||0}"/></label><label><span class="controls-label">Free delivery at ₪</span><input type="number" min="0" step="1" data-setting="threshold" value="${s.threshold||0}"/></label><button class="btn secondary small" data-editstore="${safe(s.id)}">Rename</button></div>`).join('')}
+function setQty(pid,q){if(!(Number.isFinite(q)))return;db.basket[pid]=Math.max(0,Math.round(q*1000)/1000);if(db.basket[pid]===0)delete db.basket[pid];save();render()}
+async function updateFarmer(manual=false){try{let r=await fetch('./farmer_prices.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);let d=await r.json();if(!Array.isArray(d.products)||d.products.length<10)throw Error('Not enough products in price file');snapshot=d;status=d.mode==='initial_reference'?'initial':'online';try{const hr=await fetch('./farmer_history.json?ts='+Date.now(),{cache:'no-store'});if(hr.ok)window._farmerHistory=await hr.json()}catch{}render();if(manual)message(`${d.products.length} Farmer prices loaded. Snapshot: ${dateStr(d.capturedAt)}.`)}catch(e){if(manual)message('Online update unavailable. Stored reference prices are still usable. Publish this tracker to enable weekly refresh.',true)}}
+async function updateSupermarkets(manual=false){try{const r=await fetch('./supermarket_prices.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();if(data.mode!=='official_branch_files'||!data.branches||!Object.keys(data.branches).length)throw Error('No verified branch data published yet');marketSnapshot=data;try{const hs=await fetch('./supermarket_history.json?ts='+Date.now(),{cache:'no-store'});if(hs.ok)window._supermarketHistory=await hs.json()}catch{}render();if(manual)message('Loaded verified supermarket branch snapshots: '+dateStr(data.capturedAt))}catch(e){if(manual)message('No newer official branch file available. Your manual entries remain available; a published GitHub job must run first.',true)}}
+// Buttons & inputs
+window.addEventListener('click',ev=>{let b=ev.target.closest('[data-tab]');if(b){tabs(b.dataset.tab);return}b=ev.target.closest('[data-add]');if(b){let p=product(b.dataset.add);if(p){setQty(p.id,(+db.basket[p.id]||0)+(p.unit==='kg'?p.sizeQty||1:1));message(`${p.name} added to basket`)}return}b=ev.target.closest('[data-remove]');if(b){setQty(b.dataset.remove,0);return}b=ev.target.closest('[data-step]');if(b){let p=product(b.dataset.id);let step=p.unit==='kg'?.25:1;setQty(p.id,(+db.basket[p.id]||0)+Number(b.dataset.step)*step);return}b=ev.target.closest('[data-saveprice]');if(b){let p=product(b.dataset.saveprice),outer=b.closest('[data-pricepid]'),v=key=>outer.querySelector(`[data-field="${key}"]`).value;let price=Number(v('price')),basis=v('basis'),packQty=Number(v('packQty'));let targetUnit=p.unit==='unknown'?basis==='pack'?'pack':basis:p.unit;if(!Number.isFinite(price)||price<=0){message('Please enter a valid price above zero.',true);return}if(basis==='pack'&&!(packQty>0)){message('Please enter the quantity included in the package.',true);return}if(basis!=='pack'&&basis!==targetUnit&&p.unit!=='unknown'){message(`This product is measured per ${p.unit}. Select the matching unit or use “per pack” with a quantity.`,true);return}let priceEntry={pid:p.id,name:p.name,sid:byId('selected-store').value,price,basis,packQty:basis==='pack'?packQty:1,unit:targetUnit,date:byId('shop-date').value||today(),added:Date.now()};db.history.push(priceEntry);save();message(`${p.name}: ${money(price)} recorded at ${db.stores.find(s=>s.id===priceEntry.sid)?.name}`);renderPrices();return}b=ev.target.closest('[data-editstore]');if(b){let s=db.stores.find(s=>s.id===b.dataset.editstore);let n=prompt('Store name',s.name);if(n?.trim()){s.name=n.trim();save();render()}return}});
+window.addEventListener('change',ev=>{let t=ev.target;if(t.matches('[data-basketqty]')){setQty(t.dataset.basketqty,Number(t.value));return}if(t.matches('[data-setting]')){let s=db.stores.find(s=>s.id===t.closest('[data-sid]').dataset.sid);s[t.dataset.setting]=Math.max(0,Number(t.value)||0);save();message('Store settings saved');return}});
+byId('clear-basket').onclick=()=>{if(confirm('Clear every product from the basket?')){db.basket={};save();render()}};
+byId('selected-store').onchange=()=>renderPrices();byId('shop-date').value=today();
+byId('prices-search').oninput=e=>{filters.prices=e.target.value;renderPriceRows()};byId('prices-category').onchange=e=>{filters.pricesCat=e.target.value;renderPrices()};
+byId('catalog-search').oninput=e=>{filters.catalog=e.target.value;renderCatalog()};byId('catalog-category').onchange=e=>{filters.catalogCat=e.target.value;renderCatalog()};
+byId('history-product').onchange=renderHistory;byId('history-store').onchange=renderHistory;
+byId('refresh-prices').onclick=()=>updateFarmer(true);byId('refresh-chains').onclick=()=>updateSupermarkets(true);byId('refresh-prices-2').onclick=()=>updateFarmer(true);
+byId('add-product').onclick=()=>{let name=byId('new-product-name').value.trim(),u=byId('new-product-unit').value;if(!name){message('Enter a product name.',true);return}let id='custom_'+Date.now();db.custom.push({id,name,category:'My products',price:null,unit:u,sizeQty:1,sizeText:''});save();byId('new-product-name').value='';filters.catalog='';filters.catalogCat='all';renderCatalog();message('Product added. You can now enter a price for each store.')};
+byId('add-store').onclick=()=>{let name=byId('new-store-name').value.trim();if(!name){message('Enter a store name.',true);return}db.stores.push({id:'store_'+Date.now(),name,fee:0,threshold:0});byId('new-store-name').value='';save();renderSettings();message('Store added')};
+function download(filename,body,type){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([body],{type}));a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+byId('backup').onclick=()=>download('basketwise-backup-'+today()+'.json',JSON.stringify({db,snapshot,marketSnapshot,farmerHistory:window._farmerHistory||null,supermarketHistory:window._supermarketHistory||null,exportedAt:new Date().toISOString()},null,2),'application/json');
+byId('csv').onclick=()=>{let rows=[['store','product','date','price_ils','price_basis','package_amount','normalized_unit','normalized_price']];db.history.forEach(h=>{let p=product(h.pid);rows.push([db.stores.find(s=>s.id===h.sid)?.name,h.name,h.date,h.price,h.basis,h.packQty,h.unit,h.price/(h.basis==='pack'?h.packQty:1)])});let esc=x=>'"'+String(x??'').replace(/"/g,'""')+'"';download('basketwise-prices-'+today()+'.csv','\ufeff'+rows.map(r=>r.map(esc).join(',')).join('\r\n'),'text/csv;charset=utf-8')};
+byId('import-chain-file').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=JSON.parse(await file.text());if(data.mode!=='official_branch_files'||!data.branches||!Object.keys(data.branches).length)throw Error('Not a valid official supermarket snapshot');marketSnapshot=data;render();message('Imported official supermarket snapshot: '+dateStr(data.capturedAt))}catch(err){message('Import failed: '+err.message,true)}e.target.value=''};
+byId('restore-file').onchange=async e=>{let f=e.target.files?.[0];if(!f)return;try{let x=JSON.parse(await f.text());let raw=x.db||x;if(!Array.isArray(raw.stores)||!Array.isArray(raw.history)||!raw.basket)throw Error('Invalid backup format');if(confirm('Replace this device’s manual prices, stores and basket with the backup?')){db=raw;if(x.snapshot&&Array.isArray(x.snapshot.products))snapshot=x.snapshot;if(x.marketSnapshot&&x.marketSnapshot.branches)marketSnapshot=x.marketSnapshot;if(x.farmerHistory)window._farmerHistory=x.farmerHistory;if(x.supermarketHistory)window._supermarketHistory=x.supermarketHistory;save();tabs('compare');message('Backup successfully imported')}}catch(err){message('Import failed: '+err.message,true)}e.target.value=''};
+byId('reset-data').onclick=()=>{if(confirm('Remove ALL stored manual prices, custom stores and basket on this device? Export a backup first.')){db=initial();save();tabs('compare');message('Local data reset')}};
+render();updateFarmer(false);updateSupermarkets(false);
+})();
+</script></body></html>
