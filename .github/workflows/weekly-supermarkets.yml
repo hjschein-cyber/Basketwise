@@ -1,5 +1,9 @@
 name: Refresh Rami Levy and Osher Ad prices (weekly)
 on:
+  push:
+    paths:
+      - '.github/workflows/weekly-supermarkets.yml'
+      - 'scrape_supermarkets.py'
   workflow_dispatch:
   schedule:
     - cron: "20 7 * * 1"
