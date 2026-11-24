@@ -1,6 +1,6 @@
 # Basketwise — produce price tracker
 
-Mobile shopping-basket comparisons for **The Farmer**, **Rami Levy (Ramat Beit Shemesh)**, **Osher Ad (Beit Shemesh–Galil)** and a local fruit shop.
+Mobile shopping-basket comparisons for **The Farmer**, **Rami Levy (Beit Shemesh, Yigal Alon 4)**, **Osher Ad (Beit Shemesh–Galil)** and a local fruit shop.
 
 ## Make it bookmarkable
 
